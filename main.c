@@ -1,8 +1,10 @@
  #include <stdio.h>
- #include "function.h"   
+ #include <stdlib>
+ #include "function.h"
+   
    int main () 
    {
-	Hello();
+	Menu();
     return 0;		
 	}		 
    
