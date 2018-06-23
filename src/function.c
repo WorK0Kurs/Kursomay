@@ -1,4 +1,4 @@
-#include <stdio.h>
+п»ї#include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <time.h>
@@ -62,9 +62,9 @@ void FirstGeneration (char mass[], int sizex, int sizey, int *alive) {
     while (k==0) {
         FillRand (mass, sizex, sizey);
         Display (mass, sizex, sizey, alive);
-        printf ("\n\n%30s %s", " ", "Изменить первое поколение?\n");
-        printf ("%30s %s", " ", "1. Да\n");
-        printf ("%30s %s", " ", "2. Нет\n");
+        printf ("\n\n%30s %s", " ", "РР·РјРµРЅРёС‚СЊ РїРµСЂРІРѕРµ РїРѕРєРѕР»РµРЅРёРµ?\n");
+        printf ("%30s %s", " ", "1. Р”Р°\n");
+        printf ("%30s %s", " ", "2. РќРµС‚\n");
         scanf ("%c", &code);
         scanf ("%c", &garbage);
         switch (code) {
@@ -77,7 +77,7 @@ void FirstGeneration (char mass[], int sizex, int sizey, int *alive) {
 
 void DelayTime (int *time_) {
     while (*time_<0) {
-		printf ("\n\n%15s %s", " ", "Введите время задержки между поколениями (в секундах):\n");
+		printf ("\n\n%15s %s", " ", "Р’РІРµРґРёС‚Рµ РІСЂРµРјСЏ Р·Р°РґРµСЂР¶РєРё РјРµР¶РґСѓ РїРѕРєРѕР»РµРЅРёСЏРјРё (РІ СЃРµРєСѓРЅРґР°С…):\n");
 		scanf ("%d", time_);
 		 }
 }
@@ -133,7 +133,7 @@ void Game (int sizex, int sizey) {
         printf ("\n");
 	}
 	if (alive==0) 
-        printf ("Все клетки погибли. Жизнь существовала %d поколения(ий).\n", gen-1);
+        printf ("Р’СЃРµ РєР»РµС‚РєРё РїРѕРіРёР±Р»Рё. Р–РёР·РЅСЊ СЃСѓС‰РµСЃС‚РІРѕРІР°Р»Р° %d РїРѕРєРѕР»РµРЅРёСЏ(РёР№).\n", gen-1);
     if (difference==0) 
-        printf ("Жизнь зациклена и бесконечна! Это произошло на %d поколении.\n", gen);
+        printf ("Р–РёР·РЅСЊ Р·Р°С†РёРєР»РµРЅР° Рё Р±РµСЃРєРѕРЅРµС‡РЅР°! Р­С‚Рѕ РїСЂРѕРёР·РѕС€Р»Рѕ РЅР°  %d РїРѕРєРѕР»РµРЅРёРё.\n", gen);
 }
