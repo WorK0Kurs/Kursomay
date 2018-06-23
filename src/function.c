@@ -43,7 +43,6 @@ void FillRand (char mass[], int sizex, int sizey) {
         }
     }
 }
-
 void Display (char mass[], int sizex, int sizey, int *alive) {
     char i, j;
     for (i=1; i<sizey-1; i++) {
@@ -51,10 +50,10 @@ void Display (char mass[], int sizex, int sizey, int *alive) {
             if (mass[i*sizex+j]==1) {
                 (*alive)++;
                 printf ("|+|");
-            }
+			}
             else printf ("| |");
         }
-        printf ("\n");
+		printf ("\n");
     }
 }
 
@@ -76,12 +75,13 @@ void FirstGeneration (char mass[], int sizex, int sizey, int *alive) {
     }
 }
 
-void DelayTime (int *time) {
-    while (*time<0) {
-        printf ("\n\n%15s %s", " ", "Введите время задержки между поколениями (в секундах):\n");
-        scanf ("%d", time);
-    }
+void DelayTime (int *time_) {
+    while (*time_<0) {
+		printf ("\n\n%15s %s", " ", "Введите время задержки между поколениями (в секундах):\n");
+		scanf ("%d", time_);
+		 }
 }
+
 void Neighbors (char mass[], char step[], int sizex, int sizey) {
     char i, j, neighbors;
     for (i=1; i<sizey-1; i++) {
@@ -92,7 +92,7 @@ void Neighbors (char mass[], char step[], int sizex, int sizey) {
             neighbors+=mass[(i+1)*sizex+j-1]+mass[(i+1)*sizex+j]+mass[(i+1)*sizex+j+1];
             step[i*sizex+j]=neighbors;
         }
-    }
+	}
 }
 
 void NewGeneration (char mass[], char step[], char pass1[], char pass2[], int sizex, int sizey) {
@@ -107,9 +107,10 @@ void NewGeneration (char mass[], char step[], char pass1[], char pass2[], int si
 }
 
 void Game (int sizex, int sizey) {
-    system ("clear");
+	system ("clear");
+
     char difference=1;
-    int alive=1, gen=0, time=-1;
+    int alive=1, gen=0, time_ = -1;
     sizex+=2;
     sizey+=2;
     char mass[sizex*sizey], step[sizex*sizey], pass1[sizex*sizey], pass2[sizex*sizey];
@@ -118,21 +119,21 @@ void Game (int sizex, int sizey) {
     FillNull (pass1, sizex, sizey);
     FillNull (pass2, sizex, sizey);
     FirstGeneration (mass, sizex, sizey, &alive);
-    DelayTime (&time);
+    DelayTime (&time_);
     system ("clear");
     while (alive!=0 && difference!=0) {
         difference=0;
         alive=0;
         gen++;
-        difference=ComparisonOfGenerations (mass, pass1, pass2, sizex, sizey);
+		difference=ComparisonOfGenerations (mass, pass1, pass2, sizex, sizey);
         Display (mass, sizex, sizey, &alive);
         Neighbors (mass, step, sizex, sizey);
         NewGeneration (mass, step, pass1, pass2, sizex, sizey);
-        sleep (time);
+		sleep(time_);
         printf ("\n");
-    }
-    if (alive==0) 
-		printf ("Все клетки погибли. Жизнь существовала %d поколения(ий).\n", gen-1);
+	}
+	if (alive==0) 
+        printf ("Все клетки погибли. Жизнь существовала %d поколения(ий).\n", gen-1);
     if (difference==0) 
-		printf ("Жизнь зациклена и бесконечна! Это произошло на %d поколении.\n", gen);
+        printf ("Жизнь зациклена и бесконечна! Это произошло на %d поколении.\n", gen);
 }

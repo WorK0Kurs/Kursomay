@@ -3,10 +3,10 @@ CFLAGS = -c -Wall -Werror -o
 ADD = -I thirdparty -I src
 OBJECTS = build/main.o build/function.o build/menu.o
 OBJECTS_T = build/main_t.o build/function-test.o
-
-all :  prog
-
-prog : $(OBJECTS) bin/
+ 
+all:  prog
+ 
+prog: $(OBJECTS) bin/
 	$(CC) $(OBJECTS) -o bin/Game
 test: $(OBJECTS_T) bin/
 	$(CC) $(OBJECTS_T) -o bin/Test
@@ -25,7 +25,7 @@ bin/ :
 	mkdir bin
 build/ :
 	mkdir build
-
+ 
 .PHONY : clean
 clean : 
 	rm -f bin/* build/*
